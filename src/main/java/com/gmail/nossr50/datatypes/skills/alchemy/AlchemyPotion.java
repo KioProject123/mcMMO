@@ -1,6 +1,7 @@
 package com.gmail.nossr50.datatypes.skills.alchemy;
 
 import com.gmail.nossr50.config.skills.alchemy.PotionConfig;
+import org.bukkit.ChatColor;
 import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -162,6 +163,6 @@ public class AlchemyPotion {
         if (!meta.hasDisplayName() && name != null) {
             return false;
         }
-        return (name == null && !meta.hasDisplayName()) || meta.getDisplayName().equals(name);
+        return (name == null && !meta.hasDisplayName()) || ChatColor.stripColor(meta.getDisplayName()).equals(ChatColor.stripColor(name)); // KioCG
     }
 }
