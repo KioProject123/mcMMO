@@ -1,5 +1,6 @@
 package com.gmail.nossr50.datatypes.player;
 
+import com.gmail.nossr50.KiocgFix;
 import com.gmail.nossr50.config.experience.ExperienceConfig;
 import com.gmail.nossr50.datatypes.experience.FormulaType;
 import com.gmail.nossr50.datatypes.experience.SkillXpGain;
@@ -36,8 +37,8 @@ public class PlayerProfile {
     private final Map<UniqueDataType, Integer> uniquePlayerData = new EnumMap<>(UniqueDataType.class); //Misc data that doesn't fit into other categories (chimaera wing, etc..)
 
     // Store previous XP gains for diminished returns
-    private final DelayQueue<SkillXpGain> gainedSkillsXp = new DelayQueue<>();
-    private final Map<PrimarySkillType, Float> rollingSkillsXp = new EnumMap<>(PrimarySkillType.class);
+    private final DelayQueue<SkillXpGain> gainedSkillsXp = KiocgFix.getGainedSkillsXp(uuid); // KioCG
+    private final Map<PrimarySkillType, Float> rollingSkillsXp = KiocgFix.getRollingSkillsXp(uuid); // KioCG
 
     @Deprecated
     public PlayerProfile(String playerName) {
