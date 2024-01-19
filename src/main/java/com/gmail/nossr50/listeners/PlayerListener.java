@@ -353,8 +353,10 @@ public class PlayerListener implements Listener {
 
     private void cancelFishingEventAndDropXp(PlayerFishEvent event, Player player) {
         event.setCancelled(true);
-        ExperienceOrb experienceOrb = (ExperienceOrb) player.getWorld().spawnEntity(player.getEyeLocation(), EntityType.EXPERIENCE_ORB);
-        experienceOrb.setExperience(event.getExpToDrop());
+        if (event.getExpToDrop() > 0) { // KioCG - 只在有经验时生成经验
+            ExperienceOrb experienceOrb = (ExperienceOrb) player.getWorld().spawnEntity(player.getEyeLocation(), EntityType.EXPERIENCE_ORB);
+            experienceOrb.setExperience(event.getExpToDrop());
+        }
     }
 
     /**
