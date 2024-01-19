@@ -34,6 +34,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
+import org.bukkit.block.BlockFace;
 import org.bukkit.block.BlockState;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.*;
@@ -336,7 +337,7 @@ public class PlayerListener implements Listener {
                 return;
 
             case IN_GROUND:
-                Block block = player.getTargetBlock(null, 100);
+                Block block = player.getFishHook().getLocation().getBlock().getRelative(BlockFace.DOWN); // KioCG
 
                 if (fishingManager.canIceFish(block)) {
 
